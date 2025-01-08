@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { ScoreContext } from "../context/ScoreContext";
 import "../styles/ScoreDisplay.css";
 const ScoreDisplay = () => {
-  const { state } = useContext(ScoreContext); // useContext debe importar el contexto correcto
+  const { state } = useContext(ScoreContext);
 
-  console.log("Estado actual del marcador:", state); // Esto debe mostrar el estado actualizado
+  console.log("Estado actual del marcador:", state);
 
   return (
     <div className="score-display">

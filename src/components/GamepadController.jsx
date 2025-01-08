@@ -20,8 +20,8 @@ const GamepadController = () => {
 
   return (
     <div>
-      <h2>Controles en Uso</h2>
-      <p>Presiona un botón en el control para sumar puntos.</p>
+      <h2>Control Activo</h2>
+      {/* <p>Presiona un botón en el control para sumar puntos.</p> */}
     </div>
   );
 };

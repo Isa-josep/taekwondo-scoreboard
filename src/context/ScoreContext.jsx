@@ -7,23 +7,23 @@ const initialState = {
   round: 1,
   blueWarnings: 0,
   redWarnings: 0,
+  updateKey: 0, // Clave única para forzar re-render
 };
 
 // Reducer para manejar acciones
 const scoreReducer = (state, action) => {
-  console.log("Acción recibida en el reducer:", action); // Verifica si el reducer recibe acciones
+  console.log("Acción recibida en el reducer:", action);
   switch (action.type) {
     case "ADD_POINT":
       return {
-        ...state, // Copia el estado anterior
-        [action.color]: state[action.color] + action.points, // Actualiza solo la clave especificada
+        ...state,
+        [action.color]: state[action.color] + action.points,
+        updateKey: state.updateKey + 1, // Incrementa la clave única
       };
     default:
-      return state; // Siempre retorna un nuevo estado
+      return state;
   }
 };
-
-  
 
 // Crear el contexto
 export const ScoreContext = createContext();
@@ -31,7 +31,9 @@ export const ScoreContext = createContext();
 // Proveedor del contexto
 export const ScoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(scoreReducer, initialState);
-  console.log("Estado actual del contexto:", state); 
+
+  console.log("Estado actual del contexto:", state);
+  
   return (
     <ScoreContext.Provider value={{ state, dispatch }}>
       {children}
