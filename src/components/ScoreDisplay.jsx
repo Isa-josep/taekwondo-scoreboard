@@ -4,7 +4,7 @@ import "../styles/ScoreDisplay.css";
 const ScoreDisplay = () => {
   const { state } = useContext(ScoreContext);
 
-  console.log("Estado actual del marcador:", state);
+  // console.log("Estado actual del marcador:", state);
 
   return (
     <div className="score-display">

@@ -7,11 +7,14 @@ const GamepadController = () => {
 
   const handleButtonPress = (mappedAction) => {
     console.log("Acción recibida del control:", mappedAction);
-    if (mappedAction.action === "ADD_POINT") {
+    if (mappedAction.action === "ADD_JUDGE_ACTION") {
       dispatch({
-        type: "ADD_POINT",
-        color: mappedAction.color,
-        points: mappedAction.points,
+        type: "ADD_JUDGE_ACTION",
+        payload: {
+          color: mappedAction.color,
+          points: mappedAction.points,
+          judgeId: mappedAction.judgeId,
+        },
       });
     }
   };
@@ -21,7 +24,7 @@ const GamepadController = () => {
   return (
     <div>
       <h2>Control Activo</h2>
-      {/* <p>Presiona un botón en el control para sumar puntos.</p> */}
+      {/* <p>Los puntos se registrarán según el número de jueces conectados y si todos coinciden.</p> */}
     </div>
   );
 };
