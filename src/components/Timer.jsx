@@ -40,8 +40,8 @@ const Timer = ({ onRoundEnd, onCombatEnd }) => {
 
   return (
     <div>
-      <h2>{isResting ? "Descanso" : `Round ${currentRound}`}</h2>
-      <p>Tiempo restante: {formatTime(timeLeft)}</p>
+      {/* <h2>{isResting ? "Descanso" : `Round ${currentRound}`}</h2>
+      <p>Tiempo restante: {formatTime(timeLeft)}</p> */}
     </div>
   );
 };

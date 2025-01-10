@@ -1,0 +1,140 @@
+/* Scoreboard.css */
+
+/* General */
+.scoreboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100vh;
+    background-color: #000;
+    font-family: Arial, sans-serif;
+    color: #fff;
+  }
+  
+  /* Competidor Azul */
+  .competitor.blue {
+    background-color: #0033cc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* Competidor Rojo */
+  .competitor.red {
+    background-color: #cc0000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* Nombres de Competidores */
+  .competitor-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Recuadro de los puntos */
+  .score-container {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    padding: 50px 80px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    width: 70%;
+    text-align: center;
+  }
+  
+  .score {
+    font-size: 8rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Amonestaciones */
+  .warnings {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px 30px;
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+  .warnings p {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .warnings span {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  /* Centro del marcador */
+  .center-info {
+    background-color: black;
+    color: yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    border-left: 3px solid #fff;
+    border-right: 3px solid #fff;
+    padding: 20px;
+  }
+  
+  .center-info .timer {
+    font-size: 6rem;
+    font-weight: bold;
+    background-color: yellow;
+    color: black;
+    padding: 20px 40px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 0 20px yellow;
+  }
+  
+  /* Botones de Control */
+  .control-buttons {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .control-buttons button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .control-buttons button:hover {
+    transform: scale(1.1);
+  }
+  
+  .control-buttons button:nth-child(1) {
+    background-color: green;
+    color: white;
+  }
+  
+  .control-buttons button:nth-child(2) {
+    background-color: orange;
+    color: white;
+  }
+  
+  .control-buttons button:nth-child(3) {
+    background-color: red;
+    color: white;
+  }
+  

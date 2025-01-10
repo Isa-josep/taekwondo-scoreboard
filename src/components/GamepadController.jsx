@@ -23,7 +23,7 @@ const GamepadController = () => {
 
   return (
     <div>
-      <h2>Control Activo</h2>
+      {/* <h2>Control Activo</h2> */}
       {/* <p>Los puntos se registrarán según el número de jueces conectados y si todos coinciden.</p> */}
     </div>
   );

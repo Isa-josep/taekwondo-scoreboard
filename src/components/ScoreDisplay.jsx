@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ScoreContext } from "../context/ScoreContext";
-import "../styles/ScoreDisplay.css";
+// import "../styles/ScoreDisplay.css";
 const ScoreDisplay = () => {
   const { state } = useContext(ScoreContext);
 
