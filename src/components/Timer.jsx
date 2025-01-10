@@ -1,57 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { CombatConfigContext } from "../context/CombatConfigContext"; // Importa correctamente el contexto
 
-const Timer = ({ initialTime = 120, onTimeEnd }) => {
-  const [time, setTime] = useState(initialTime); // Tiempo en segundos
-  const [isRunning, setIsRunning] = useState(false); // Estado del temporizador
+const Timer = ({ onRoundEnd, onCombatEnd }) => {
+  const { config } = useContext(CombatConfigContext); // Asegúrate de usar CombatConfigContext
+  const [timeLeft, setTimeLeft] = useState(config.roundTime);
+  const [currentRound, setCurrentRound] = useState(1);
+  const [isResting, setIsResting] = useState(false);
 
-  // Maneja el inicio y pausa del temporizador
   useEffect(() => {
     let timer;
-    if (isRunning) {
+    if (timeLeft > 0) {
       timer = setInterval(() => {
-        setTime((prevTime) => {
-          if (prevTime <= 1) {
-            clearInterval(timer);
-            if (onTimeEnd) onTimeEnd(); // Llamada al finalizar el tiempo
-            return 0;
-          }
-          return prevTime - 1;
-        });
+        setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
+    } else {
+      clearInterval(timer);
+      if (isResting) {
+        if (currentRound < config.totalRounds) {
+          setCurrentRound((prevRound) => prevRound + 1);
+          setTimeLeft(config.roundTime);
+          setIsResting(false);
+        } else {
+          onCombatEnd();
+        }
+      } else {
+        onRoundEnd(currentRound);
+        setTimeLeft(config.restTime);
+        setIsResting(true);
+      }
     }
     return () => clearInterval(timer);
-  }, [isRunning, onTimeEnd]);
+  }, [timeLeft, isResting, currentRound, config, onRoundEnd, onCombatEnd]);
 
-  // Maneja la tecla de espacio para alternar el estado (pausa/inicia)
-  useEffect(() => {
-    const handleKeyPress = (event) => {
-      if (event.code === "Space") {
-        event.preventDefault(); // Previene el scroll al presionar espacio
-        setIsRunning((prev) => !prev); // Alterna el estado
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyPress);
-
-    return () => window.removeEventListener("keydown", handleKeyPress);
-  }, []);
-
-  // Formatea el tiempo (MM:SS)
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
   return (
-    <div className="timer">
-      <h1>{formatTime(time)}</h1>
-      <div className="timer-controls">
-        <button onClick={() => setIsRunning(!isRunning)}>
-          {isRunning ? "Pausar" : "Iniciar"}
-        </button>
-        <button onClick={() => setTime(initialTime)}>Reiniciar</button>
-      </div>
+    <div>
+      <h2>{isResting ? "Descanso" : `Round ${currentRound}`}</h2>
+      <p>Tiempo restante: {formatTime(timeLeft)}</p>
     </div>
   );
 };
