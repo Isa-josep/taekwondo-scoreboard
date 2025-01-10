@@ -3,9 +3,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     height: 100vh;
+    width: 100vw;
     background-color: #000;
     font-family: Arial, sans-serif;
     color: #fff;
+    margin: -8px;
   }
   
   /* Competidor Azul */
@@ -135,4 +137,53 @@
     background-color: red;
     color: white;
   }
+
+  /* Contenedor de botones en cuadrícula 2x2 */
+.control-buttons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas */
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Estilo general de los botones */
+.control-buttons-grid button {
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Efecto hover */
+.control-buttons-grid button:hover {
+  transform: scale(1.1);
+}
+
+/* Botón de sumar amonestación */
+.control-buttons-grid button:nth-child(1) {
+  background-color: #ffc107; /* Amarillo */
+  color: #000;
+}
+
+/* Botón de sumar punto */
+.control-buttons-grid button:nth-child(2) {
+  background-color: #28a745; /* Verde */
+  color: #fff;
+}
+
+/* Botón de restar amonestación */
+.control-buttons-grid button:nth-child(3) {
+  background-color: #6c757d; /* Gris */
+  color: #fff;
+}
+
+/* Botón de restar punto */
+.control-buttons-grid button:nth-child(4) {
+  background-color: #dc3545; /* Rojo */
+  color: #fff;
+}
+
   
